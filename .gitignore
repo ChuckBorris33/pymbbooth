@@ -1,0 +1,15 @@
+/node_modules/
+/public/build/
+/public/photos/*.*
+/public/photos/thumbnails/*.*
+/saved_recordings/
+
+yarn-error.log
+
+
+.DS_Store
+.vscode
+.idea
+pymbbooth.egg-info
+__pycache__
+.python-version

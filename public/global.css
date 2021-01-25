@@ -1,0 +1,29 @@
+html, body, main {
+	position: relative;
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    cursor: none;
+}
+
+.container {
+    background-image: url("./images/trees.png");
+    width: 100%;
+	height: 100%;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+.hidden {
+    visibility: hidden;
+}
