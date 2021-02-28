@@ -13,13 +13,9 @@ try:
 except ImportError:
     has_picamera = False
 
-ASSETS_DIR = "assets/"
-PHOTO_DIR = "public/photos/"
-THUBNAIL_DIR = path.join(PHOTO_DIR, "thumbnails")
-
 
 def _prepare_countdown_image(number):
-    img = Image.open(path.join(ASSETS_DIR, f"{number}.png"))
+    img = Image.open(path.join(config.ASSETS_DIR, f"{number}.png"))
     padded = Image.new(
         "RGBA",
         (
@@ -47,9 +43,9 @@ def _save_photo(stream):
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
     filename = f"image_{stamp}.jpg"
     image = Image.open(stream)
-    image.save(path.join(PHOTO_DIR, filename))
+    image.save(path.join(config.PHOTO_DIR, filename))
     image.thumbnail((300, 300))
-    image.save(path.join(THUBNAIL_DIR, filename))
+    image.save(path.join(config.THUBNAIL_DIR, filename))
 
 
 def capture_photo(countdown_images):

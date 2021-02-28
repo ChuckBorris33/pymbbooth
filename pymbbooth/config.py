@@ -11,3 +11,9 @@ PRINTER_OPTIONS = {
 CAPTURE_RESOLUTION = (2592, 1728)
 CAPTURE_MODE = 2
 PREVIEW_RESOLUTION = (1296, 864)
+
+
+ASSETS_DIR = "assets/"
+PHOTO_DIR = "public/photos"
+THUBNAIL_DIR = "public/photos/thumbnails"
+ALBUM_NAME = "Photobooth"

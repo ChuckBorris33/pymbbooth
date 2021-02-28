@@ -13,3 +13,6 @@ yarn-error.log
 pymbbooth.egg-info
 __pycache__
 .python-version
+
+credentials.json
+google_credentials.dat

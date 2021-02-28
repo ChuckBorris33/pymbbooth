@@ -3,7 +3,7 @@ import argparse
 
 import webview
 
-from pymbbooth.api import JsAPi
+from pymbbooth.api import JsApi
 
 INDEX_PATH = os.path.abspath("public/index.html")
 
@@ -15,7 +15,7 @@ def run(develop=False):
 
     try:
         window = webview.create_window(
-            "Photobooth", INDEX_PATH, fullscreen=True, frameless=False, js_api=JsAPi()
+            "Photobooth", INDEX_PATH, fullscreen=True, frameless=False, js_api=JsApi()
         )
         webview.start(http_server=True, debug=arguments.develop)
     except KeyboardInterrupt:
