@@ -1,6 +1,8 @@
 import svelte from "rollup-plugin-svelte";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import yaml from '@rollup/plugin-yaml';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
@@ -40,6 +42,7 @@ export default {
     name: "app",
     file: "public/build/bundle.js",
   },
+  inlineDynamicImports: true,
   plugins: [
     svelte({
       compilerOptions: {
@@ -51,6 +54,11 @@ export default {
     // a separate file - better for performance
     css({ output: "bundle.css" }),
 
+    // yaml for locales
+    yaml(),
+    // allows to import locales dynamicaly
+    dynamicImportVars({}),
+
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -
@@ -61,10 +69,6 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
-
-    // // In dev mode, call `npm run start` once
-    // // the bundle has been generated
-    // !production && serve(),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production

@@ -23,3 +23,7 @@ export async function getThumbnailList() {
 export async function startCapture() {
   return await window.pywebview.api.start_capture();
 }
+
+export async function getConfig() {
+  return await window.pywebview.api.get_config();
+}

@@ -16,12 +16,12 @@ def _get_ordered_files(path):
 
 class JsApi:
     def __init__(self):
-        self.gsession = setup_google_session()
-        self.album_id = get_album_id(self.gsession, config.ALBUM_NAME)
+        if config.USE_GOOGLE_PHOTOS:
+            self.gsession = setup_google_session()
+            self.album_id = get_album_id(self.gsession, config.ALBUM_NAME)
         self.coundown_images = prepare_countdown_images()
 
     def get_last_photo(self):
-        
         return _get_ordered_files(config.PHOTO_DIR + "/*.jpg")[0]
 
     def get_thumbnails(self):
@@ -29,7 +29,8 @@ class JsApi:
 
     def start_capture(self):
         photo_result =  capture_photo(self.coundown_images)
-        _thread.start_new_thread(upload_photo, (self.gsession, self.get_last_photo(), self.album_id))
+        if config.USE_GOOGLE_PHOTOS:
+            _thread.start_new_thread(upload_photo, (self.gsession, self.get_last_photo(), self.album_id))
         return photo_result
 
     def print_photo(self, photo):
@@ -37,3 +38,8 @@ class JsApi:
 
     def job_state(self, job_id):
         return job_state(job_id)
+
+    def get_config(self):
+        return {
+            "locale": config.LOCALE,
+        }

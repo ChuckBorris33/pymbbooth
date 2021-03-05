@@ -1,4 +1,6 @@
 <script>
+  import { _ } from "svelte-i18n";
+
   import { createEventDispatcher } from "svelte";
 
   import { printPhoto } from "../actions";
@@ -43,14 +45,6 @@
     printState = "sending";
     print();
   }
-
-  /*
-  TODO:
-  Error message about checking printer state on display
-  Two buttons:
-    Cancel: Cancels printer jobs and emits cancel event
-    Try Again: Cancels printer jobs and tries again by setting print state to sending and calling print
-  */
 </script>
 
 <style>
@@ -116,21 +110,21 @@
     <div class="print-modal">
       {#if printState == 'sending'}
         <div class="sending-to-printer">
-          <h1>Posielam do tlačiarne</h1>
+          <h1>{$_('sending_to_printer')}</h1>
           <div class="spiner-sizer">
             <Spinner />
           </div>
         </div>
       {:else if printState == 'error'}
         <div class="sending-to-printer">
-          <h1>Chyba tlače</h1>
+          <h1>{$_('printing_error')}</h1>
           <div>
             <!-- svelte-ignore a11y-missing-attribute -->
             <img class="error-icon" src="./images/error.svg" />
           </div>
           <div class="button-group">
-            <div class="button" on:click={cancel}>Zrušiť</div>
-            <div class="button" on:click={tryAgain}>Skúsiť znovu</div>
+            <div class="button" on:click={cancel}>{$_('cancel')}</div>
+            <div class="button" on:click={tryAgain}>{$_('try_again')}</div>
           </div>
         </div>
       {/if}

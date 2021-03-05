@@ -17,3 +17,7 @@ ASSETS_DIR = "assets/"
 PHOTO_DIR = "public/photos"
 THUBNAIL_DIR = "public/photos/thumbnails"
 ALBUM_NAME = "Photobooth"
+
+USE_GOOGLE_PHOTOS = True
+
+LOCALE = "sk"

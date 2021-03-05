@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { _ } from "svelte-i18n";
 
   import { AppState } from "../defines";
   import { getLastPhoto, setState } from "../actions";
@@ -55,7 +56,7 @@
     </div>
   {/if}
   <BottomMenu>
-    <MenuButton text="Späť" iconName="back" on:click={showIntro} />
+    <MenuButton text="{$_('back')}" iconName="back" on:click={showIntro} />
     {#if lastFileName}
       <PrintButton
         filename={lastFileName}

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { _ } from "svelte-i18n";
 
   import { AppState } from "../defines";
   import { getThumbnailList, setState } from "../actions";
@@ -152,7 +153,7 @@
   {/if}
   <div class="menu">
     <BottomMenu>
-      <MenuButton text="Späť" iconName="back" on:click={back} />
+      <MenuButton text="{$_('back')}" iconName="back" on:click={back} />
       {#if detailOpened}
         <PrintButton filename={photoList[selectedPhotoId]} />
       {/if}
