@@ -8,12 +8,11 @@ from google.oauth2.credentials import Credentials
 
 from pymbbooth import config
 
+
 def _auth(credential_file, scopes):
     """open browser to create credentials"""
-    flow = InstalledAppFlow.from_client_secrets_file(
-        credential_file, scopes=scopes
-    )
- 
+    flow = InstalledAppFlow.from_client_secrets_file(credential_file, scopes=scopes)
+
     return flow.run_local_server(
         host="localhost",
         port=8181,
@@ -39,17 +38,12 @@ def _save_cred(credentials, saved_credentials):
 
 
 def _get_authorized_session(credential_file, saved_credentials, scopes):
-    if (
-        not os.path.exists(saved_credentials)
-        or os.path.getsize(saved_credentials) == 0
-    ):
+    if not os.path.exists(saved_credentials) or os.path.getsize(saved_credentials) == 0:
         creds = _auth(credential_file, scopes)
         session = AuthorizedSession(creds)
         _save_cred(creds, saved_credentials)
     else:
-        creds = Credentials.from_authorized_user_file(
-            saved_credentials, scopes
-        )
+        creds = Credentials.from_authorized_user_file(saved_credentials, scopes)
         session = AuthorizedSession(creds)
     return session
 
@@ -69,6 +63,7 @@ def _get_albums(session):
                 return
         else:
             return
+
 
 def get_album_id(session, album_name):
     for a in _get_albums(session):
@@ -94,13 +89,13 @@ def setup_google_session():
     ]
     session = _get_authorized_session(credential_file, saved_credentials, scopes)
     return session
-    
+
 
 def upload_photo(session, photo_filename, album_id):
     session.headers["Content-type"] = "application/octet-stream"
     session.headers["X-Goog-Upload-Protocol"] = "raw"
 
-    photo_path = os.path.join(config.PHOTO_DIR, photo_filename) 
+    photo_path = os.path.join(config.PHOTO_DIR, photo_filename)
     try:
         photo_file = open(photo_path, mode="rb")
         photo_bytes = photo_file.read()
@@ -140,8 +135,10 @@ def upload_photo(session, photo_filename, album_id):
         except KeyError:
             pass
 
+
 if __name__ == "__main__":
     from pymbbooth.api import JsApi
+
     session = setup_session()
     album_id = get_album_id(session, "Photobooth")
     api = JsApi()

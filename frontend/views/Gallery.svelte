@@ -153,7 +153,7 @@
   {/if}
   <div class="menu">
     <BottomMenu>
-      <MenuButton text="{$_('back')}" iconName="back" on:click={back} />
+      <MenuButton text={$_('back')} iconName="back" on:click={back} />
       {#if detailOpened}
         <PrintButton filename={photoList[selectedPhotoId]} />
       {/if}

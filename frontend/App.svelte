@@ -10,7 +10,7 @@
   import Preview from "./views/Preview.svelte";
   import Gallery from "./views/Gallery.svelte";
 
-  import en from './locale/en.yaml';
+  import en from "./locale/en.yaml";
 
   let apiReady = false;
 
@@ -23,9 +23,9 @@
 
   onMount(async () => {
     window.addEventListener("pywebviewready", async () => {
-      const {locale} = await getConfig();
-      const dictionary = await import(`./locale/${locale}.yaml`)
-      addMessages(locale, dictionary)
+      const { locale } = await getConfig();
+      const dictionary = await import(`./locale/${locale}.yaml`);
+      addMessages(locale, dictionary);
       init({
         initialLocale: locale,
       });

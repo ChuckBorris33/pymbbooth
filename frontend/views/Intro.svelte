@@ -1,5 +1,5 @@
 <script>
-  import { _ } from "svelte-i18n"
+  import { _ } from "svelte-i18n";
 
   import { AppState } from "../defines";
   import { setState } from "../actions";
@@ -61,12 +61,15 @@
     <h1>{$_('take_a_photo')}</h1>
     <div class="capture-button">
       <!-- svelte-ignore a11y-img-redundant-alt -->
-      <img src="./images/camera.svg" alt="{$_('take_a_photo')}" />
+      <img src="./images/camera.svg" alt={$_('take_a_photo')} />
     </div>
   </div>
   <div class="menu">
     <BottomMenu>
-      <MenuButton text="{$_('gallery')}" iconName="galery" on:click={showGallery} />
+      <MenuButton
+        text={$_('gallery')}
+        iconName="galery"
+        on:click={showGallery} />
     </BottomMenu>
   </div>
 </div>

@@ -28,9 +28,11 @@ class JsApi:
         return _get_ordered_files(config.THUBNAIL_DIR + "/*.jpg")
 
     def start_capture(self):
-        photo_result =  capture_photo(self.coundown_images)
+        photo_result = capture_photo(self.coundown_images)
         if config.USE_GOOGLE_PHOTOS:
-            _thread.start_new_thread(upload_photo, (self.gsession, self.get_last_photo(), self.album_id))
+            _thread.start_new_thread(
+                upload_photo, (self.gsession, self.get_last_photo(), self.album_id)
+            )
         return photo_result
 
     def print_photo(self, photo):

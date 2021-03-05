@@ -56,7 +56,7 @@
     </div>
   {/if}
   <BottomMenu>
-    <MenuButton text="{$_('back')}" iconName="back" on:click={showIntro} />
+    <MenuButton text={$_('back')} iconName="back" on:click={showIntro} />
     {#if lastFileName}
       <PrintButton
         filename={lastFileName}

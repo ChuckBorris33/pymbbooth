@@ -19,8 +19,8 @@ setup(
     name="pymbbooth",
     version="0.0.1",
     description="Raspberry pie photobooth app",
-    long_description=long_description, # from readme
-    long_description_content_type='text/markdown',
+    long_description=long_description,  # from readme
+    long_description_content_type="text/markdown",
     # url='https://github.com/pypa/sampleproject', # link to github
     author="Boris Zalman",
     # This should be a valid email address corresponding to the author listed
@@ -36,12 +36,8 @@ setup(
     ],
     keywords="raspberry, photobooth",
     python_requires=">=3.7, <4",
-    install_requires=["Pillow", "pywebview[gtk]"],
+    install_requires=["Pillow", "pywebview[gtk]", "picamera", "pycups"],
     data_files=tree("public"),
-    extras_require={
-        "pi": ["picamera", "pycups"],
-        "dev": ["watchgod", "black"],
-    },
     entry_points={
         "console_scripts": [
             "photobooth=pymbbooth.app:run",
